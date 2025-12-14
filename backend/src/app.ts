@@ -1,6 +1,7 @@
 ﻿import express from 'express';
 import cors from 'cors';
 import authRoutes from './auth/auth.routes';
+import protectedRoutes from './protected/protected.routes';
 
 const app = express();
 
@@ -12,5 +13,6 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/protected', protectedRoutes);
 
 export default app;
