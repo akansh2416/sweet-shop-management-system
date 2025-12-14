@@ -49,3 +49,55 @@ describe('Auth - Registration', () => {
     expect(response.body).toHaveProperty('error');
   });
 });
+
+describe('Auth - Login', () => {
+  beforeAll(async () => {
+    await prisma.user.deleteMany();
+    // Create a test user
+    await request(app)
+      .post('/api/auth/register')
+      .send({
+        email: 'login@example.com',
+        password: 'password123',
+        name: 'Login User'
+      });
+  });
+
+  it('should login with valid credentials', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .send({
+        email: 'login@example.com',
+        password: 'password123'
+      });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('token');
+    expect(response.body).toHaveProperty('user');
+    expect(response.body.user.email).toBe('login@example.com');
+  });
+
+  it('should not login with invalid password', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .send({
+        email: 'login@example.com',
+        password: 'wrongpassword'
+      });
+
+    expect(response.status).toBe(401);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should not login with non-existent email', async () => {
+    const response = await request(app)
+      .post('/api/auth/login')
+      .send({
+        email: 'nonexistent@example.com',
+        password: 'password123'
+      });
+
+    expect(response.status).toBe(401);
+    expect(response.body).toHaveProperty('error');
+  });
+});
