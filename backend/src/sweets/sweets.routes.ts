@@ -4,7 +4,8 @@ import {
   getSweetById, 
   createSweet, 
   updateSweet, 
-  deleteSweet 
+  deleteSweet,
+  searchSweets 
 } from './sweets.controller';
 import { authenticateToken } from '../middleware/auth.middleware';
 import { requireRole } from '../middleware/role.middleware';
@@ -13,6 +14,7 @@ const router = Router();
 
 // Public routes
 router.get('/', getAllSweets);
+router.get('/search', searchSweets);
 router.get('/:id', getSweetById);
 
 // Admin only routes

@@ -132,7 +132,7 @@ export const deleteSweet = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// Search sweets (Prisma 6 compatible)
+// Search sweets
 export const searchSweets = async (req: Request, res: Response) => {
   try {
     const { 
@@ -150,6 +150,14 @@ export const searchSweets = async (req: Request, res: Response) => {
 
     // Build filter conditions
     const where: any = {};
+
+    // Text search (name or description)
+    if (q) {
+      where.OR = [
+        { name: { contains: q as string, mode: 'insensitive' } },
+        { description: { contains: q as string, mode: 'insensitive' } }
+      ];
+    }
 
     // Price range filter
     if (minPrice || maxPrice) {
@@ -169,38 +177,24 @@ export const searchSweets = async (req: Request, res: Response) => {
       where.stock = { equals: 0 };
     }
 
-    // Get ALL sweets matching non-text filters first
-    const allSweets = await prisma.sweet.findMany({
+    // Get total count for pagination
+    const total = await prisma.sweet.count({ where });
+
+    // Get paginated results
+    const sweets = await prisma.sweet.findMany({
       where,
+      skip,
+      take: limitNum,
       orderBy: { createdAt: 'desc' }
     });
 
-    // Apply text search filter manually (Prisma 6 workaround)
-    let filteredSweets = allSweets;
-    if (q) {
-      const searchTerm = (q as string).toLowerCase();
-      filteredSweets = allSweets.filter(sweet => 
-        sweet.name.toLowerCase().includes(searchTerm) ||
-        (sweet.description && sweet.description.toLowerCase().includes(searchTerm))
-      );
-    }
-
-    // Calculate pagination
-    const total = filteredSweets.length;
-    const totalPages = Math.ceil(total / limitNum);
-    
-    // Apply pagination
-    const startIndex = skip;
-    const endIndex = Math.min(startIndex + limitNum, total);
-    const paginatedSweets = filteredSweets.slice(startIndex, endIndex);
-
     res.json({
-      data: paginatedSweets,
+      data: sweets,
       pagination: {
         total,
         page: pageNum,
         limit: limitNum,
-        totalPages
+        totalPages: Math.ceil(total / limitNum)
       }
     });
   } catch (error) {
