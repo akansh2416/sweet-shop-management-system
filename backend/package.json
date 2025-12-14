@@ -6,15 +6,15 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:watch": "jest --watch",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate"
-  },
+"scripts": {
+  "test": "jest",
+  "test:watch": "jest --watch",
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "dev": "ts-node-dev src/index.ts",
+  "prisma:migrate": "prisma migrate dev",
+  "prisma:generate": "prisma generate"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
