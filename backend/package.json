@@ -2,27 +2,19 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "type": "commonjs",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
-    "build": "tsc --skipLibCheck",
-    "start": "node dist/index.js"
-  },
-<<<<<<< HEAD
-=======
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "prisma:migrate": "prisma migrate dev",
     "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
->>>>>>> 188b69f (Fix: add Node types for TypeScript)
   "dependencies": {
     "@prisma/client": "^6.19.1",
     "bcryptjs": "^3.0.3",
