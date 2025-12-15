@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
-    "build": "tsc",
+    "build": "tsc --skipLibCheck",
     "start": "node dist/index.js"
   },
   "dependencies": {
@@ -15,17 +15,17 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3"
   },
- "devDependencies": {
-  "@types/cors": "^2.8.19",
-  "@types/express": "^5.0.6",
-  "@types/jest": "^30.0.0",
-  "@types/jsonwebtoken": "^9.0.10",
-  "@types/node": "^25.0.2",
-  "@types/supertest": "^6.0.3",
-  "jest": "^30.2.0",
-  "supertest": "^7.1.4",
-  "ts-jest": "^29.4.6",
-  "ts-node-dev": "^2.0.0",
-  "typescript": "^5.9.3"
-}
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.0.2",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
 }
