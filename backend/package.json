@@ -7,13 +7,10 @@
     "test": "tests"
   },
 "scripts": {
-  "test": "jest",
-  "test:watch": "jest --watch",
-  "build": "tsc",
-  "start": "node dist/index.js",
   "dev": "ts-node-dev src/index.ts",
-  "prisma:migrate": "prisma migrate dev",
-  "prisma:generate": "prisma generate"
+  "build": "tsc",
+  "start": "node dist/index.js"
+}
 },
   "keywords": [],
   "author": "",
