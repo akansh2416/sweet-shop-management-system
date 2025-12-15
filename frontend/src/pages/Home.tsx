@@ -44,7 +44,7 @@ const Home: React.FC = () => {
             </Card.Body>
           </Card>
 
-     // In Home.tsx, replace the button section with:
+    
 <div style={{ marginTop: '30px' }}>
   {user ? (
     <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>

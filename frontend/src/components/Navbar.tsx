@@ -2,10 +2,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+
+
 const Navbar: React.FC = () => {
   const { user, logout, isAdmin } = useAuth();
   const navigate = useNavigate();
 
+  console.log('Navbar - User:', user, 'Is Admin:', isAdmin);
+  
   const handleLogout = () => {
     logout();
     navigate('/login');

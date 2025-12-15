@@ -8,24 +8,12 @@ import ProtectedRoute from './components/ProtectedRoutes';
 import Home from './pages/Home'; 
 import Login from './pages/Login';
 import Register from './pages/Register';
-// TODO: We still need to create these, keep placeholders
-// import SweetsList from './pages/SweetsList';
-// import AdminPanel from './pages/AdminPanel';
+import SweetsList from './pages/SweetsList';
+import AdminPanel from './pages/AdminPanel';
 
-// Placeholders for pages we haven't built yet
-const SweetsListPlaceholder = () => (
-  <Container className="py-5 text-center">
-    <h2>Sweets List</h2>
-    <p>Coming soon... (You need to be logged in to see this)</p>
-  </Container>
-);
 
-const AdminPanelPlaceholder = () => (
-  <Container className="py-5 text-center">
-    <h2>Admin Panel</h2>
-    <p>Coming soon... (Admin only)</p>
-  </Container>
-);
+
+
 
 function App() {
   return (
@@ -42,7 +30,7 @@ function App() {
               path="/sweets" 
               element={
                 <ProtectedRoute>
-                  <SweetsListPlaceholder />
+                  <SweetsList />
                 </ProtectedRoute>
               } 
             />
@@ -50,7 +38,7 @@ function App() {
               path="/admin" 
               element={
                 <ProtectedRoute adminOnly>
-                  <AdminPanelPlaceholder />
+                  <AdminPanel/>
                 </ProtectedRoute>
               } 
             />
