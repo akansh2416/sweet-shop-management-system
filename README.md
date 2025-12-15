@@ -29,6 +29,9 @@ Custom CSS with responsive design
 
 Axios for API communication
 
+
+
+
 📁 Project Structure
 text
 sweet-shop-tdd/
@@ -52,6 +55,8 @@ sweet-shop-tdd/
     │   ├── types/             # TypeScript definitions
     │   └── App.tsx            # Main application
     └── package.json           # Frontend dependencies
+
+
 🚀 Quick Start
 Prerequisites
 Node.js (v16 or higher)
