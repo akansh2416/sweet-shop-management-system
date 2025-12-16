@@ -16,7 +16,12 @@ const app = express();
 
 // Add CORS middleware
 app.use(cors({
-  origin: '*',
+  origin: [
+     'http://localhost:5173',  // Local development
+    'https://sweet-shop-management-system-cwh500m9k-akansh2416s-projects.vercel.app',  // Your current Vercel
+    'https://sweet-shop-management-system.vercel.app',  // Your main domain
+    'https://*.vercel.app'  // Any Vercel subdomain
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
