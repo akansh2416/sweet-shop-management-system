@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     target: 'es2020'
+  },
+  server: {
+    historyApiFallback: true
   }
 })
